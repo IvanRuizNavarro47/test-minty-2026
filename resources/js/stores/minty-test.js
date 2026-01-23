@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useMintyTestStore = defineStore('minty-test', {
   state: () => ({
-    testUser: 'Candidato/a', // Nombre de usuario de prueba
+    testUser: 'Iván Ruiz Navarro', // Nombre de usuario de prueba
     bookings: [],            // Array que contendrá todos los bookings con sus guests
   }),
 

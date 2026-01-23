@@ -17,20 +17,18 @@ class Booking extends Model
         'status',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    //casts = datetime con mas funcionalidades
     protected function casts(): array
     {
         return [
+        //se obtieen un cast y no un string en los dos casos
             'checkin_at' => 'datetime',
             'checkout_at' => 'datetime',
         ];
     }
 
-    public function guests()
+    //Relación: una Booking tiene muchos Guests
+    public function guests():hasMany
     {
         return $this->hasMany(Guest::class);
     }

@@ -7,18 +7,14 @@ use Illuminate\Http\Request;
 
 class GuestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-public function index() {
-    return Guest::all();
+    //listar todos los guests GET
+    public function index() {
+        return Guest::all();
 
-}
+    }
 
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    //Guarda un nuevo invitado POST
     public function store(Request $request)
     {
        $validated = $request->validate([
@@ -27,31 +23,26 @@ public function index() {
                 'email' => 'nullable|email',
                 'phone' => 'nullable|string',
             ]);
-
+    //Crea el invitado a partir de los datos del modelo
+    //Importante: tiene que tener $fillable definido
     return Guest::create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Guest $guest) //al poner guest reconoce el modelo del que le hablamos
+    //Muestra guest por id GET guests/{id}
+    public function show(Guest $guest) //al poner guest reconoce el modelo del que le hablamos que se busca en base de datos
     {
            return $guest;
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    //Actualiza los datos del guest existente PUT
     public function update(Request $request, Guest $guest)
     {
            $guest->update($request->all());
            return $guest;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //Elimina el guest DELETE
     public function destroy(Guest $guest)
     {
       $guest->delete();
